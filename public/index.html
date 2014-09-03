@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Landing page of Dashboard</title>
+
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/sidebar.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/font-awesome.min.css">
+<style>
+#menu-toggle
+{
+position:absolute;
+margin-left:25px;
+margin-top:85px;
+}
+#bread
+{
+position:relative;
+margin-top:51px;
+}
+#dashboard_navbar
+{
+position:relative;
+margin-top:-20px;
+height:45px;
+background-color:#F4F4F4;
+}
+#dash_font
+{
+font-size:20px;
+}
+#create
+{
+position:relative;
+margin-top:-90px;
+float:right;
+padding:40px;
+}
+</style>
+</head> 
+<body>
+<div id="wrapper">
+<!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <div id="response_data">
+
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-line-chart"></i> &nbsp;Stats Panel</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-file-text-o"></i> &nbsp;Pages</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-empire"></i> &nbsp;Events</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th"></i> &nbsp;About</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-plug"></i> &nbsp;Services</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-phone"></i> &nbsp;Contact</a>
+                </li><br><br>
+                <li>
+                <i class="fa fa-linkedin-square fa-lg"></i>
+                <i class="fa fa-google-plus-square fa-lg"></i>
+                <i class="fa fa-pinterest-square fa-lg"></i>
+                </li>
+                <li>
+                <i class="fa fa-twitter fa-lg"></i>
+                <i class="fa fa-youtube fa-lg"></i>
+                <i class="fa fa-facebook-square fa-lg"></i>
+                </li>
+            </ul>
+        </div>
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" id="nimesh" href="#"><i id="toggle_icon" class="fa fa-bars fa-lg"></i></a>
+                <a class="navbar-brand" href="#">Admin</a>
+            </div>
+             
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" target="_blank">Home</a></li>
+                    <li><a href="#" target="_blank">About</a></li>
+                    <li><a href="#" target="_blank">Contact</a></li>
+                </ul>
+                <form role="search" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+            </form>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                <a  data-toggle="modal" data-target="#myModal" href="#">
+                <b>Login
+                </a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+     
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div> 
+      <form onsubmit="attempt()">
+      <div class="modal-body">
+       <span class="uname"><b>Username</span><input type="text" class="form-control" class="login_username" id="login_username"><br><br>
+       <span class="pass"><b>Password</span><input type="password" class="form-control" class="login_password" id="login_password"><br>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" id="login_attempt">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+ </div>
+ <ul class="breadcrumb" id="bread">
+    <li>You are Here:</li>
+    <li><a href="#">Home</a></li>
+    </ul>
+    <div id="dashboard_navbar">
+    <i class="fa fa-home fa-2x"></i> &nbsp; <span id="dash_font">Dashboard</span>
+    </div>
+    <div class="btn-group" id="create">
+  <button type="button" class="btn btn-primary">Create</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">New Project</a></li>
+    <li><a href="#">New Table</a></li>
+    <li><a href="#">New Chart </a></li>
+    <li class="divider"></li>
+    <li><a href="#">Create a Member</a></li>
+  </ul>
+</div>
+</div>
+    <script src="/Dashboard App/Dashboard/jquery.min.js"></script>
+    <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var arr=[];
+        function attempt(){
+            return $.ajax({
+                url: '/login_attempt',
+                data: {
+                    username: $('#login_username').val(),
+                    password: $('#login_password').val()
+                },
+                async : false,
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+                    //alert("hello");
+
+                    //alert(data);
+                    $('#response_data').html("Welcome "+ data.username);
+
+                },
+                error: function (xhr, status){
+                    alert(status);
+                }
+            });
+        }
+        
+    </script>
+    <script>
+        $("#nimesh").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+</html>                                                                         

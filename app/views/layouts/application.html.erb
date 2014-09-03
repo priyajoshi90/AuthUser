@@ -1,0 +1,22 @@
+<%
+response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+response.headers["Expires"] = "0" # Proxies.
+%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuthenticateUser</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if current_user %>
+	Welcome <%= current_user.username %>
+	<h4 align="right"><%= link_to "Log Out", logout_url(params[:user_id]) %> </h4>	
+<% end %>
+<%= yield %>
+
+</body>
+</html>

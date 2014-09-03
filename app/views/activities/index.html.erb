@@ -1,0 +1,36 @@
+<h1>Listing activities</h1>
+<% if not @messages_rendered -%>
+  <% if flash[:error] -%>
+    <p class='error'><%=h flash[:error] %></p>
+  <% end -%>
+  <% if flash[:notice] -%>
+    <p class='notice'><%=h flash[:notice] %></p>
+  <% end -%>
+<% end -%>
+<% @messages_rendered = true -%>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.name %></td>
+        <td><%= activity.desc %></td>
+        <td><%= link_to 'Show', activity_path(activity.id) %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity.id) %></td>
+        <td><%= link_to 'Destroy', activity_path(activity.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Activity', new_activity_path %>

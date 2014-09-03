@@ -1,0 +1,21 @@
+<% @page_title = "UserAuth | Login" -%>
+<% if not @messages_rendered -%>
+  <% if flash[:error] -%>
+    <p class='error'><%=h flash[:error] %></p>
+  <% end -%>
+  <% if flash[:notice] -%>
+    <p class='notice'><%=h flash[:notice] %></p>
+  <% end -%>
+<% end -%>
+<% @messages_rendered = true -%>
+
+	<div class = "login_form">
+	<h1>Login</h1>
+	<%= form_tag(:action => 'login_attempt') do %>
+		<p>Username or Email:</br><%= text_field_tag(:username_or_email) %></p>
+		<p>Password:</br> <%= password_field_tag :login_password %></p>
+		<%= submit_tag("Login") %></br>
+		<%= link_to "Sign Up", signup_url %>
+	<% end %>
+	</div>
+
