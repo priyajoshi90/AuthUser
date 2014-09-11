@@ -38,6 +38,63 @@ float:right;
 padding:40px;
 }
 </style>
+<script src="/Dashboard App/Dashboard/jquery.min.js"></script>
+<script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+$("#createlink").toggle();
+$("#nimesh").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+});
+$(function(){
+            $('.btnLogin').click(function(){
+                $.ajax({
+                    url: '/login_attempt',
+                    data: {
+                        username: $('#login_username').val(),
+                        password: $('#login_password').val()
+                    },
+                    async : false,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("hello");
+                        //alert(data);
+                        $('#response_data').html("Welcome "+ data.username);
+
+                    },
+                    error: function (xhr, status){
+                        alert(status);
+                    }
+                });
+            });
+        });
+$(function(){
+    $('.btn-activity').click(function(){
+        $.ajax({
+            url: '/activities',
+            data: {
+                name: $('#name').val(),
+                desc: $('#desc').val(),
+                category: $('#status').val(),
+                status: $('#category').val()
+            },
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(xhr, status){
+                alert(status);
+            }
+        });
+    });
+});
+</script>
 </head> 
 <body>
 <div id="wrapper">
@@ -49,14 +106,24 @@ padding:40px;
 
                     </div>
                 </li>
-                <li>
+               <li>
                     <a href="#"><i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-line-chart"></i> &nbsp;Stats Panel</a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-file-text-o"></i> &nbsp;Pages</a>
+                <li class="nav-header">
+                    <a id="createlink" href="#" data-toggle="collapse" data-target="#createMenu">
+                            <i class="fa fa-files-o"></i> &nbsp; Create <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul style="list-style: none;" class="collapse out" id="createMenu">
+                    <li><a data-toggle="modal"
+                           data-target="#createActivity" href="#">New Activity</a></li>
+                    <li><a href="#">New Category</a></li>
+                    <li><a href="#">Edit User Information </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Create a Member</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-empire"></i> &nbsp;Events</a>
@@ -129,13 +196,13 @@ padding:40px;
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Login</h4>
       </div> 
-      <form onsubmit="attempt()">
+      <form >
       <div class="modal-body">
        <span class="uname"><b>Username</span><input type="text" class="form-control" class="login_username" id="login_username"><br><br>
        <span class="pass"><b>Password</span><input type="password" class="form-control" class="login_password" id="login_password"><br>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" id="login_attempt">Submit</button>
+        <button type="button" class="btn btn-primary btnLogin" id="login_attempt" data-dismiss="modal">Submit</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -156,48 +223,69 @@ padding:40px;
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="#">New Project</a></li>
-    <li><a href="#">New Table</a></li>
-    <li><a href="#">New Chart </a></li>
+    <li><a data-toggle="modal"
+   data-target="#createActivity" href="#">Create New Activity</a></li>
+    <li><a href="#">Create New Category</a></li>
+    <li><a href="#">Edit User Information </a></li>
     <li class="divider"></li>
     <li><a href="#">Create a Member</a></li>
   </ul>
 </div>
 </div>
-    <script src="/Dashboard App/Dashboard/jquery.min.js"></script>
-    <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
+<div class="modal fade" id="createActivity" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create a new activity</h4>
+            </div>
 
-    <script type="text/javascript">
-        var arr=[];
-        function attempt(){
-            return $.ajax({
-                url: '/login_attempt',
-                data: {
-                    username: $('#login_username').val(),
-                    password: $('#login_password').val()
-                },
-                async : false,
-                type: 'POST',
-                dataType: 'json',
-                success: function(data) {
-                    //alert("hello");
-
-                    //alert(data);
-                    $('#response_data').html("Welcome "+ data.username);
-
-                },
-                error: function (xhr, status){
-                    alert(status);
-                }
-            });
-        }
-        
-    </script>
-    <script>
-        $("#nimesh").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
+            <div class="modal-body">
+                <form id="loginForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Name</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="name" name="username" autofocus/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Description</label>
+                        <div class="col-md-5">
+                            <textarea rows="6" cols="18" class="form-control" id="desc" name="description"/></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Status</label>
+                        <div class="col-md-5">
+                            <select id = "status">
+                                <option value="status" selected>Select status of the activity</option>
+                                <option>-------</option>
+                                <option value="1">Running</option>
+                                <option value="2">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Category</label>
+                        <div class="col-md-5">
+                            <select id = "category">
+                                <option value="status" selected>Select category of the activity</option>
+                                <option>-------</option>
+                                <option value="1">Testing</option>
+                                <option value="2">Development</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 col-md-offset-3">
+                            <button type="submit" class="btn btn-primary btn-activity">Submit</button>&nbsp;&nbsp;
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>                                                                         

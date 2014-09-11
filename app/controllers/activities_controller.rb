@@ -9,7 +9,6 @@ class ActivitiesController < ApplicationController
     if current_user
       @activities = Activity.where(:user_id => current_user.id)
     else
-      p "i m here"
       return false
       flash[:notice] = "You are not authorized to perform this action"
     end
@@ -33,9 +32,26 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
+    p "hi"
     @user = User.find(current_user.id)
-    @activity = Activity.new(activity_params)
+    @status = Status.find( params[:status])
+    @category = Category.find(params[:category])
+    @activity = Activity.new()
+    @activity.name = params[:name]
+    @activity.desc = params[:desc]
     @activity.user = @user
+    @activity.status = @status
+    @activity.category = @category
+    respond_to do |format|
+      if @activity.save
+        format.json { render json: @activity }
+      else
+        format.json { render json: @activity.errors}
+      end
+    end
+
+=begin
+
     respond_to do |format|
       if @activity.save
         format.html { redirect_to activity_path(params[:id]), notice: 'Activity was successfully created.' }
@@ -45,6 +61,8 @@ class ActivitiesController < ApplicationController
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
+
+=end
   end
 
   # PATCH/PUT /activities/1
@@ -79,7 +97,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:name, :desc, :user_id)
+      params.require(:activity).permit(:name, :desc, :status, :category)
     end
 =begin
   protected

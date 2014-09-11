@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
       p session[:user_id]
       respond_to do |format|
         format.json { render json: authorized_user }
-        p "hello"
       end
   		#flash[:notice] = "Welcome, You logged in as #{authorized_user.username}"
   		#redirect_to activities_url(session[:user_id])
