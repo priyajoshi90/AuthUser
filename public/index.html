@@ -72,6 +72,14 @@ $(function(){
                 });
             });
         });
+$(function()
+{
+  $("#ajaxdata").click(function(){
+    $.get("/activities",function(data){
+      alert("Data: " + data.name);
+    });
+  });
+});
 $(function(){
     $('.btn-activity').click(function(){
         $.ajax({
@@ -126,7 +134,7 @@ $(function(){
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-empire"></i> &nbsp;Events</a>
+                    <a id="ajaxdata" href="#"><i class="fa fa-empire"></i> &nbsp;Events</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-th"></i> &nbsp;About</a>
