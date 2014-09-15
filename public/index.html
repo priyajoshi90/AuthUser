@@ -40,9 +40,9 @@ padding:40px;
 </style>
 <script src="/Dashboard App/Dashboard/jquery.min.js"></script>
 <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
-
 <script>
 $(document).ready(function(){
+    var r;
 $("#createlink").toggle();
 $("#nimesh").click(function(e) {
             e.preventDefault();
@@ -74,10 +74,18 @@ $(function(){
         });
 $(function()
 {
-  $("#ajaxdata").click(function(){
-    $.get("/activities",function(data){
-      alert("Data: " + data.name);
-    });
+  $('#ajaxdata').click(function(){
+    $.get('/activities',function(data){
+        $.each(data, function(data1){
+            alert(data[data1]);
+            var redata=data[data1];
+            $.each(redata,function(data2)
+            {
+                alert("response" + redata[data2]);
+            });
+            //alert("Data: " + data[data1]);
+        });
+     }); 
   });
 });
 $(function(){
@@ -197,7 +205,7 @@ $(function(){
     </nav>
      
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -233,7 +241,8 @@ $(function(){
   <ul class="dropdown-menu" role="menu">
     <li><a data-toggle="modal"
    data-target="#createActivity" href="#">Create New Activity</a></li>
-    <li><a href="#">Create New Category</a></li>
+    <li><a data-toggle="modal"
+   data-target="#createCategory"href="#">Create New Category</a></li>
     <li><a href="#">Edit User Information </a></li>
     <li class="divider"></li>
     <li><a href="#">Create a Member</a></li>
@@ -294,6 +303,7 @@ $(function(){
             </div>
         </div>
     </div>
+
 </div>
 </body>
 </html>                                                                         
