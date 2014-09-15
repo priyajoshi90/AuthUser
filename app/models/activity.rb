@@ -4,6 +4,10 @@ class Activity < ActiveRecord::Base
 	belongs_to :category
 
 	def as_json(options={})
-  		super(:only => [:name,:desc,:created_at,:updated_at])
+  		super(:only => [:name,:desc,:created_at,:updated_at],
+  			:include => {
+  				:category => {:only => :title},
+  				:status => {:only => :title}
+  				})
 	end
 end

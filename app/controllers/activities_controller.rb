@@ -8,6 +8,7 @@ class ActivitiesController < ApplicationController
   def index
     if current_user
       @activities = Activity.where(:user_id => current_user.id)
+      #@category = @categories.map(&:category))
       respond_to do |format|
         format.json{ render json: @activities.as_json() }
       end
