@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Landing page of activities</title>
+
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/sidebar.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/font-awesome.min.css">
+<style>
+#menu-toggle
+{
+position:absolute;
+margin-left:25px;
+margin-top:85px;
+}
+#bread
+{
+position:relative;
+margin-top:51px;
+}
+#dashboard_navbar
+{
+position:relative;
+margin-top:-20px;
+height:45px;
+background-color:#F4F4F4;
+}
+#dash_font
+{
+font-size:20px;
+}
+#create
+{
+position:relative;
+margin-top:-90px;
+float:right;
+padding:40px;
+}
+</style>
+<script src="/Dashboard App/Dashboard/jquery.min.js"></script>
+<script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#createlink").toggle();
+$("#nimesh").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+});   
+});
+function ab()
+{
+    alert("page is loaded");
+} 
+</script>
+</head> 
+<body>
+<div id="wrapper">
+<!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <div id="response_data">
+
+                    </div>
+                </li>
+                <li>
+                    <a href="/"><i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-line-chart"></i> &nbsp;Stats Panel</a>
+                </li>
+                <li class="nav-header">
+                    <a href="#" data-toggle="collapse" data-target="#createMenu" >
+                            <i class="fa fa-files-o"></i> &nbsp; Create <i class="fa fa-caret-down"></i>
+                    </a>
+                 <ul style="list-style: none;" class="collapse out" id="createMenu">
+                    <li><a data-toggle="modal"
+                           data-target="#createActivity" href="#">New Activity</a></li>
+                    <li><a href="#">New Category</a></li>
+                    <li><a href="#">Edit User Information </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Create a Member</a></li>
+                 </ul> 
+                </li>
+                <li>
+                    <a id="ajaxdata" href="#"><i class="fa fa-empire"></i> &nbsp;Events</a>
+                </li>
+                <li>
+                    <a href="/user_activities.html"><i class="fa fa-th"></i> &nbsp;My Activities</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-plug"></i> &nbsp;Services</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-phone"></i> &nbsp;Contact</a>
+                </li><br><br>
+                <li>
+                <i class="fa fa-linkedin-square fa-lg"></i>
+                <i class="fa fa-google-plus-square fa-lg"></i>
+                <i class="fa fa-pinterest-square fa-lg"></i>
+                </li>
+                <li>
+                <i class="fa fa-twitter fa-lg"></i>
+                <i class="fa fa-youtube fa-lg"></i>
+                <i class="fa fa-facebook-square fa-lg"></i>
+                </li>
+            </ul>
+        </div>
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" id="nimesh" href="#"><i id="toggle_icon" class="fa fa-bars fa-lg"></i></a>
+                <a class="navbar-brand" href="#">Admin</a>
+            </div>
+             
+            
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" target="_blank">Home</a></li>
+                    <li><a href="#" target="_blank">About</a></li>
+                    <li><a href="#" target="_blank">Contact</a></li>
+                </ul>
+                    <form role="search" class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search" class="form-control">
+                        </div>
+                    </form>
+            
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  data-toggle="modal" data-target="#myModal" href="#">
+                        <b>Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+                <ul class="breadcrumb" id="bread">
+                    <li>You are Here:</li>
+                    <li><a href="/">Home 
+                    <li><a href="/user_activities.html">My Activities</a></li>
+                </ul>
+        <div id="dashboard_navbar">
+            <i class="fa fa-home fa-2x"></i> &nbsp; <span id="dash_font">My Activities</span>
+        </div>
+        <table class="table">
+    <thead>
+        <tr>
+            <th>Activity Name</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Last Updated At</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+</div>
+</body>
+</html>                                                                         
