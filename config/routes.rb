@@ -2,6 +2,7 @@ AuthenticateUser::Application.routes.draw do
 
   
 
+  resources :categories
   #root :to => "sessions#login"
   get "signup", :to => "users#new"
   get "login", :to => "sessions#login"
