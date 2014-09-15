@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
     if current_user
       @activities = Activity.where(:user_id => current_user.id)
       respond_to do |format|
-        format.json{ render json: @activities }
+        format.json{ render json: @activities.as_json() }
       end
     else
       return false
