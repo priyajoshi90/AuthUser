@@ -37,6 +37,11 @@ margin-top:-90px;
 float:right;
 padding:40px;
 }
+#response_data
+{
+    color:white;
+    background-color: black;
+}
 </style>
 <script src="/Dashboard App/Dashboard/jquery.min.js"></script>
 <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
@@ -108,11 +113,26 @@ $(function(){
             }
         });
     });
+/*$(function(){
+    $('#categorySubmit').click(function(){
+        $.ajax({
+            url: '/categories',
+            data: {
+                name: $('#cname').val(),
+                desc: $('#cdesc').val()
+            },
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(xhr, status){
+                alert(status);
+            }
+        });
+    });*/
 });
-
-
-
-
 </script>
 </head> 
 <body>
@@ -138,7 +158,8 @@ $(function(){
                  <ul style="list-style: none;" class="collapse out" id="createMenu">
                     <li><a data-toggle="modal"
                            data-target="#createActivity" href="#">New Activity</a></li>
-                    <li><a href="#">New Category</a></li>
+                    <li><a data-toggle="modal"
+                           data-target="#categoryModal" href="#">New Category</a></li>
                     <li><a href="#">Edit User Information </a></li>
                     <li class="divider"></li>
                     <li><a href="#">Create a Member</a></li>
@@ -206,8 +227,47 @@ $(function(){
             </div>
         </div>
     </nav>
+
+
+<!-- Category Modal -->
+<div class="modal fade" id="categoryModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="mytestModalLabel"><b>Create a new category</b></h4>
+      </div>
+      <div class="modal-body">
+       <form id="loginForm" method="post" class="form-horizontal">
+                   <div class="form-group">
+                        <label class="col-md-3 control-label">Category Name</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="cname" name="username" autofocus />
+                        </div>
+                   </div>
+                   <div class="form-group">
+                        <label class="col-md-3 control-label">Category Description</label>
+                        <div class="col-md-5">
+                            <textarea rows="6" cols="18" class="form-control" id="cdesc" name="description"/></textarea>
+                        </div>
+                    </div> 
+                </form>    
+      </div>
+      <div class="modal-footer">
+      <div class="form-group">
+              <div class="col-md-5 col-md-offset-3">
+                   <button type="submit" id="categorySubmit" class="btn btn-primary btn-activity">Submit</button>&nbsp;&nbsp;
+                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+             </div>
+       </div>
+       </div>
+    </div>
+  </div>
+</div>
+
      
-<!-- Modal -->
+<!-- Login Modal -->
 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -244,19 +304,21 @@ $(function(){
   <ul class="dropdown-menu" role="menu">
     <li><a data-toggle="modal"
    data-target="#createActivity" href="#">Create New Activity</a></li>
-    <li><a data-toggle="modal"
-   data-target="#createCategory"href="#">Create New Category</a></li>
+    <li><a data-toggle="modal" data-target="#categoryModal"  href="#">Create New Category</a></li>
     <li><a href="#">Edit User Information </a></li>
     <li class="divider"></li>
     <li><a href="#">Create a Member</a></li>
   </ul>
 </div>
 </div>
+
+<!--Activity Modal-->
 <div class="modal fade" id="createActivity" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Create a new activity</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title"><b>Create a new activity</b></h4>
             </div>
 
             <div class="modal-body">
@@ -295,12 +357,14 @@ $(function(){
                             </select>
                         </div>
                     </div>
+                    <div class="modal-footer">
                     <div class="form-group">
                         <div class="col-md-5 col-md-offset-3">
                             <button type="submit" class="btn btn-primary btn-activity">Submit</button>&nbsp;&nbsp;
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
     
                         </div>
+                    </div>
                     </div>
                 </form>
             </div>

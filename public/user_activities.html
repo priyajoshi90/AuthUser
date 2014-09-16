@@ -47,11 +47,10 @@ $("#nimesh").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
 });   
+window.onbeforeunload = function(e) {
+  return 'Hello';
+};
 });
-function ab()
-{
-    alert("page is loaded");
-} 
 </script>
 </head> 
 <body>
@@ -165,7 +164,6 @@ function ab()
     <tbody>
     </tbody>
 </table>
-
 </div>
 </body>
 </html>                                                                         
