@@ -5,6 +5,13 @@ class CategoriesController < ApplicationController
 
   def create
   	@category = Category.new(category_params)
+    respond_to do |format|
+      if @category.save
+        format.json{ render json: @category }
+      else
+        format.json{ render json: @category.errors }
+      end
+    end
   end
 
   def edit

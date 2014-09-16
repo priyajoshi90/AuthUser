@@ -52,7 +52,7 @@ $("#nimesh").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
-}); 
+ 
 $(function(){
             $('.btnLogin').click(function(){
                 $.ajax({
@@ -113,25 +113,30 @@ $(function(){
             }
         });
     });
-/*$(function(){
-    $('#categorySubmit').click(function(){
+});
+
+  $(function(){
+    $('.btn-category').click(function(){
+        alert("hi");
         $.ajax({
             url: '/categories',
             data: {
-                name: $('#cname').val(),
-                desc: $('#cdesc').val()
+                category: {
+                    title: $('#cname').val(),
+                },
             },
             async: false,
             type: 'POST',
             dataType: 'json',
             success: function(data){
-
+                alert(data);
             },
             error: function(xhr, status){
                 alert(status);
             }
         });
-    });*/
+    });
+});
 });
 </script>
 </head> 
@@ -245,18 +250,12 @@ $(function(){
                             <input type="text" class="form-control" id="cname" name="username" autofocus />
                         </div>
                    </div>
-                   <div class="form-group">
-                        <label class="col-md-3 control-label">Category Description</label>
-                        <div class="col-md-5">
-                            <textarea rows="6" cols="18" class="form-control" id="cdesc" name="description"/></textarea>
-                        </div>
-                    </div> 
                 </form>    
       </div>
       <div class="modal-footer">
       <div class="form-group">
               <div class="col-md-5 col-md-offset-3">
-                   <button type="submit" id="categorySubmit" class="btn btn-primary btn-activity">Submit</button>&nbsp;&nbsp;
+                   <button type="button" class="btn btn-primary btn-category" data-dismiss="modal">Submit</button>&nbsp;&nbsp;
                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
     
              </div>
