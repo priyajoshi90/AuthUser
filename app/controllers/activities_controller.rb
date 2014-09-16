@@ -38,14 +38,10 @@ class ActivitiesController < ApplicationController
   def create
     p "hi"
     @user = User.find(current_user.id)
-    @status = Status.find( params[:status])
-    @category = Category.find(params[:category])
-    @activity = Activity.new()
-    @activity.name = params[:name]
-    @activity.desc = params[:desc]
+    @activity = Activity.new(activity_params)
+    #@activity.name = params[:name]
+    #@activity.desc = params[:desc]
     @activity.user = @user
-    @activity.status = @status
-    @activity.category = @category
     respond_to do |format|
       if @activity.save
         format.json { render json: @activity }
@@ -101,7 +97,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:name, :desc, :status, :category)
+      params.require(:activity).permit(:name, :desc, :status_id, :category_id)
     end
 =begin
   protected

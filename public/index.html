@@ -97,10 +97,12 @@ $(function(){
         $.ajax({
             url: '/activities',
             data: {
+                activity: {
                 name: $('#name').val(),
                 desc: $('#desc').val(),
-                category: $('#status').val(),
-                status: $('#category').val()
+                status_id: $('#status').val(),
+                category_id: $('#category').val()
+                },
             },
             async: false,
             type: 'POST',
@@ -117,7 +119,6 @@ $(function(){
 
   $(function(){
     $('.btn-category').click(function(){
-        alert("hi");
         $.ajax({
             url: '/categories',
             data: {
