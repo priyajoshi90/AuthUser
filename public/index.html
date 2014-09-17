@@ -11,6 +11,102 @@
 <script src="/Dashboard App/Dashboard/jquery.min.js"></script>
 <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
 <script src="/dash.js"></script>
+<script>
+$(document).ready(function(){
+$("#createlink").toggle();
+$("#nimesh").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+ 
+$(function(){
+            $('.btnLogin').click(function(){
+                $.ajax({
+                    url: '/login_attempt',
+                    data: {
+                        username: $('#login_username').val(),
+                        password: $('#login_password').val()
+                    },
+                    async : false,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("hello");
+                        //alert(data);
+                        $('#response_data').html("Welcome "+ data.username );
+
+                    },
+                    error: function (xhr, status){
+                        alert(status);
+                    }
+                });
+            });
+        });
+$(function()
+{
+  $('#ajaxdata').click(function(){
+    $.get('/activities',function(data){
+        $.each(data, function(data1){
+            alert(data[data1]);
+            var redata=data[data1];
+            $.each(redata,function(data2)
+            {
+                alert("response" + redata[data2]);
+            });
+            //alert("Data: " + data[data1]);
+        });
+     }); 
+  });
+});
+$(function(){
+    $('.btn-activity').click(function(){
+        $.ajax({
+            url: '/activities',
+            data: {
+                activity: {
+                name: $('#name').val(),
+                desc: $('#desc').val(),
+                status_id: $('#status').val(),
+                category_id: $('#category').val()
+                },
+            },
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(xhr, status){
+                alert(status);
+            }
+        });
+    });
+});
+
+  $(function(){
+    $('.btn-category').click(function(){
+        $.ajax({
+            url: '/categories',
+            data: {
+                category: {
+                    title: $('#cname').val(),
+                },
+            },
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            success: function(data){
+                alert(data);
+            },
+            error: function(xhr, status){
+                alert(status);
+            }
+        });
+    });
+});
+});
+</script>
+>>>>>>> f929e5c5bff9d3ec4db4eb5c7b24b9d4e4599c5b
 </head> 
 <body>
 <div id="wrapper">
