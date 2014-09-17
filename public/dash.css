@@ -1,0 +1,34 @@
+#menu-toggle
+{
+position:absolute;
+margin-left:25px;
+margin-top:85px;
+}
+#bread
+{
+position:relative;
+margin-top:51px;
+}
+#dashboard_navbar
+{
+position:relative;
+margin-top:-20px;
+height:45px;
+background-color:#F4F4F4;
+}
+#dash_font
+{
+font-size:20px;
+}
+#create
+{
+position:relative;
+margin-top:-90px;
+float:right;
+padding:40px;
+}
+#response_data
+{
+    color:white;
+    background-color: black;
+}

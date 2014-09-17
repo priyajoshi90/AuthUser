@@ -3,6 +3,18 @@ class CategoriesController < ApplicationController
   	@category = Category.new
   end
 
+  def index
+    if current_user
+      @categories = Category.all
+      respond_to do |format|
+        format.json{ render json: @categories }
+      end
+      else
+      return false
+      #flash[:notice] = "You are not authorized to perform this action"
+    end
+  end
+
   def create
   	@category = Category.new(category_params)
     respond_to do |format|
