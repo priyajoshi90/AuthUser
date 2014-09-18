@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Landing page of Dashboard</title>
+
+<link rel="stylesheet" type="text/css" href="/dash.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/sidebar.css">
+<link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/font-awesome.min.css">
+<script src="/Dashboard App/Dashboard/jquery.min.js"></script>
+<script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
+<script src="/dash.js"></script>
+</head> 
+<body>
+<div id="wrapper">
+<!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <div id="response_data">
+
+                    </div>
+                </li>
+               <li>
+                    <a href=""><i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
+                </li>
+                <li>
+                    <a href="/login.html"><i class="fa fa-line-chart"></i> &nbsp;Stats Panel</a>
+                </li>
+                <li class="nav-header">
+                    <a href="#" data-toggle="collapse" data-target="#createMenu">
+                            <i class="fa fa-files-o"></i> &nbsp; Create <i class="fa fa-caret-down"></i>
+                    </a>
+                 <ul style="list-style: none;" class="collapse out" id="createMenu">
+                    <li><a data-toggle="modal"
+                           data-target="#createActivity" href="#">New Activity</a></li>
+                    <li><a data-toggle="modal"
+                           data-target="#categoryModal" href="#">New Category</a></li>
+                    <li><a href="#">Edit User Information </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Create a Member</a></li>
+                 </ul> 
+                </li>
+                <li>
+                    <a href="/user_activities.html"><i class="fa fa-empire"></i> &nbsp;Events</a>
+                </li>
+                <li>
+                    <a id="activitydata" href="#"><i class="fa fa-th"></i> &nbsp;My Activities</a>
+                </li>
+                <li>
+                    <a id="categorydata" href="#"><i class="fa fa-plug"></i> &nbsp;My Categories</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-phone"></i> &nbsp;Contact</a>
+                </li><br><br>
+                <li>
+                <i class="fa fa-linkedin-square fa-lg"></i>
+                <i class="fa fa-google-plus-square fa-lg"></i>
+                <i class="fa fa-pinterest-square fa-lg"></i>
+                </li>
+                <li>
+                <i class="fa fa-twitter fa-lg"></i>
+                <i class="fa fa-youtube fa-lg"></i>
+                <i class="fa fa-facebook-square fa-lg"></i>
+                </li>
+            </ul>
+        </div>
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" id="nimesh" href="#"><i id="toggle_icon" class="fa fa-bars fa-lg"></i></a>
+                <a id="logout" class="navbar-brand" href="#">Admin</a>
+            </div>
+             
+          
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" target="_blank">Home</a></li>
+                    <li><a href="#" target="_blank">About</a></li>
+                    <li><a href="#" target="_blank">Contact</a></li>
+                </ul>
+                <form role="search" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+            </form>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                <a  data-toggle="modal" data-target="#myModal" href="#">
+                <b>Login
+                </a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Category Modal -->
+<div class="modal fade" id="categoryModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="mytestModalLabel"><b>Create a new category</b></h4>
+      </div>
+      <div class="modal-body">
+       <form id="loginForm" method="post" class="form-horizontal">
+                   <div class="form-group">
+                        <label class="col-md-3 control-label">Category Name</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="cname" name="username" autofocus />
+                        </div>
+                   </div>
+                </form>    
+      </div>
+      <div class="modal-footer">
+      <div class="form-group">
+              <div class="col-md-5 col-md-offset-3">
+                   <button type="button" class="btn btn-primary btn-category" data-dismiss="modal">Submit</button>&nbsp;&nbsp;
+                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+             </div>
+       </div>
+       </div>
+    </div>
+  </div>
+</div>
+
+     
+<!-- Login Modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div> 
+      <form >
+      <div class="modal-body">
+       <span class="uname"><b>Username</span><input type="text" class="form-control" class="login_username" id="login_username"><br><br>
+       <span class="pass"><b>Password</span><input type="password" class="form-control" class="login_password" id="login_password"><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btnLogin" id="login_attempt" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+ </div>
+ <ul class="breadcrumb" id="bread">
+    <li>You are Here:</li>
+    <li><a href="/">Home</a></li>
+    </ul>
+    <div id="dashboard_navbar">
+    <i class="fa fa-home fa-2x"></i> &nbsp; <span id="dash_font">Dashboard</span>
+    </div>
+    <div class="btn-group" id="create">
+  <button type="button" class="btn btn-primary">Create</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a data-toggle="modal"
+   data-target="#createActivity" href="#">Create New Activity</a></li>
+    <li><a data-toggle="modal" data-target="#categoryModal"  href="#">Create New Category</a></li>
+    <li><a href="#">Edit User Information </a></li>
+    <li class="divider"></li>
+    <li><a href="#">Create a Member</a></li>
+  </ul>
+</div>
+<div id="some" class="table-responsive">
+    </div>
+</div>
+
+<!--Activity Modal-->
+<div class="modal fade" id="createActivity" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title"><b>Create a new activity</b></h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="loginForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Name</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="name" name="username" autofocus/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Description</label>
+                        <div class="col-md-5">
+                            <textarea rows="6" cols="18" class="form-control" id="desc" name="description"/></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Status</label>
+                        <div class="col-md-5">
+                            <select id = "status">
+                                <option value="status" selected>Select status of the activity</option>
+                                <option>-------</option>
+                                <option value="1">Running</option>
+                                <option value="2">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Activity Category</label>
+                        <div class="col-md-5">
+                            <select id = "category">
+                                <option value="status" selected>Select category of the activity</option>
+                                <option>-------</option>
+                                <option value="1">Testing</option>
+                                <option value="2">Development</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="col-md-5 col-md-offset-3">
+                            <button type="submit" class="btn btn-primary btn-activity" data-dismiss="modal">Submit</button>&nbsp;&nbsp;
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>                                                                         

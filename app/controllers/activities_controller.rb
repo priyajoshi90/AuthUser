@@ -44,7 +44,7 @@ class ActivitiesController < ApplicationController
     @activity.user = @user
     respond_to do |format|
       if @activity.save
-        format.json { render json: @activity }
+        format.json { render json: @activity.as_json() }
       else
         format.json { render json: @activity.errors}
       end

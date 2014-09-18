@@ -7,19 +7,18 @@ $("#nimesh").click(function(e) {
  
 $(function()
  {
-       $('.btnLogin').click(function(){
+       $('#login_main').click(function(){
                 $.ajax({
                     url: '/login_attempt',
                     data: {
-                        username: $('#login_username').val(),
-                        password: $('#login_password').val()
+                        username: $('#inputName').val(),
+                        password: $('#inputPassword').val()
                     },
                     async : false,
                     type: 'POST',
                     dataType: 'json',
                     success: function(data) {
-                        //alert("hello");
-                        //alert(data);
+                        window.location.href = "/homepage.html";
                         $('#response_data').html("Welcome "+ data.username );
 
                     },
@@ -74,20 +73,31 @@ $(function()
        $(".table").append(ctr);
      }
     }; 
+        $('#logout').click(function(){
+                $.ajax({
+            url: '/logout',
+            cache: false,
+            success: function() {
+                window.location.href = "/";
+            }
+        });
+            });
+
     $('.btn-activity').click(function(){
         $.ajax({
             url: '/activities',
-            data: {
+            data: { activity: {
                 name: $('#name').val(),
                 desc: $('#desc').val(),
-                category: $('#status').val(),
-                status: $('#category').val()
+                category_id: $('#status').val(),
+                status_id: $('#category').val()
+                },
             },
             async: false,
             type: 'POST',
             dataType: 'json',
             success: function(data){
-
+                window.location.href = "/homepage.html";
             },
             error: function(xhr, status){
                 alert(status);
