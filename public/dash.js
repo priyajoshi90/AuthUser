@@ -7,7 +7,7 @@ $("#nimesh").click(function(e) {
  
 $(function()
  {
-            $('.btnLogin').click(function(){
+       $('.btnLogin').click(function(){
                 $.ajax({
                     url: '/login_attempt',
                     data: {
@@ -43,11 +43,11 @@ $(function()
   });
   function active(data) {
     $("#some").html("");
-        var r = $("<table class='table table-bordered table-hover'><thead><tr><th>Activity Name</th><th>Description</th><th>Category</th><th>Status</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
+        var r = $("<table class='table table-bordered table-hover'><thead><tr><th>Select</th><th>Activity Name</th><th>Description</th><th>Category</th><th>Status</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(r);
        for (var i = 0; i <=data.length ; i++) 
      {
-           var tr =$('<tr><td>'+(data[i].name)+'</td><td>'+(data[i].desc)+'</td><td>'+(data[i].category.title)+'</td><td>'+(data[i].status.title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
+           var tr =$('<tr><td><div class="hello"><input type="checkbox" class="dynamo"</div></td><td>'+(data[i].name)+'</td><td>'+(data[i].desc)+'</td><td>'+(data[i].category.title)+'</td><td>'+(data[i].status.title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
        $(".table").append(tr);
      }
            
@@ -66,14 +66,13 @@ $(function()
   });
    function cate(data) {
     $("#some").html("");
-        var c = $("<table class='table table-bordered table-hover'><thead><tr><th>Category Name</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
+        var c = $("<table class='table table-bordered table-hover'><thead><tr><th>Select</th><th>Category Name</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(c);
        for (var i = 0; i <=data.length ; i++) 
      {
-           var ctr =$('<tr><td>'+(data[i].title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
+           var ctr =$('<tr><td><input type="checkbox" class="dynamo"</td><td>'+(data[i].title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
        $(".table").append(ctr);
      }
-           
     }; 
     $('.btn-activity').click(function(){
         $.ajax({
