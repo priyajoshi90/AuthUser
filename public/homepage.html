@@ -26,7 +26,7 @@
                     <a href="/homepage.html"><i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-line-chart"></i> &nbsp;Stats Panel</a>
+                    <a href="#"><i class="fa fa-user"></i> &nbsp;My Profile</a>
                 </li>
                 <li class="nav-header">
                     <a href="#" data-toggle="collapse" data-target="#createMenu">
@@ -39,17 +39,18 @@
                            data-target="#categoryModal" href="#">New Category</a></li>
                     <li><a href="#">Edit User Information </a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Create a Member</a></li>
+                    <li><a data-toggle="modal"
+   data-target="#newmemberModal" href="#">Create a Member</a></li>
                  </ul> 
-                </li>
-                <li>
-                    <a href="/user_activities.html"><i class="fa fa-empire"></i> &nbsp;Events</a>
                 </li>
                 <li>
                     <a id="activitydata" href="#"><i class="fa fa-th"></i> &nbsp;My Activities</a>
                 </li>
                 <li>
-                    <a id="categorydata" href="#"><i class="fa fa-plug"></i> &nbsp;My Categories</a>
+                    <a id="categorydata" href="#"><i class="fa fa-tags"></i> &nbsp;My Categories</a>
+                </li>
+                <li>
+                    <a href="/user_activities.html"><i class="fa fa-empire"></i> &nbsp;Events</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-phone"></i> &nbsp;Contact</a>
@@ -111,7 +112,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="mytestModalLabel"><b>Create a new category</b></h4>
+        <h4 class="modal-title" id="modalLabel"><b>Create a new category</b></h4>
       </div>
       <div class="modal-body">
        <form id="loginForm" method="post" class="form-horizontal">
@@ -160,7 +161,7 @@
  </div>
  <ul class="breadcrumb" id="bread">
     <li>You are Here:</li>
-    <li><a href="/">Home</a></li>
+    <li><a href="/homepage.html">Home</a></li>
     </ul>
     <div id="dashboard_navbar">
     <i class="fa fa-home fa-2x"></i> &nbsp; <span id="dash_font">Dashboard</span>
@@ -177,12 +178,48 @@
     <li><a data-toggle="modal" data-target="#categoryModal"  href="#">Create New Category</a></li>
     <li><a href="#">Edit User Information </a></li>
     <li class="divider"></li>
-    <li><a href="#">Create a Member</a></li>
+    <li><a data-toggle="modal"
+   data-target="#newmemberModal" href="#">Create a Member</a></li>
   </ul>
 </div>
 <div id="some" class="table-responsive">
     </div>
 </div>
+
+<!--Sign Up Modal-->
+<div class="modal fade" id="newmemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div id="sign_modal" class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modalLabel1"><b>Sign Up</b></h4>
+    </div>
+   <div class="form-group"><br>
+    <label class="signup_fields" for="user_name">Enter a Username</label>
+    <input type="text" id="text1" class="form-control" id="user_name" placeholder="Enter Username" autofocus>
+  </div>
+  <div class="form-group">
+    <label class="signup_fields" for="Email1">Email address</label>
+    <input type="email" id="text2" class="form-control" id="inputEmail" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="signup_fields" for="Password">Enter a Password</label>
+    <input type="password" id="text3" class="form-control" id="sign_Password" placeholder="Enter Password">
+  </div>
+  <div class="form-group">
+    <label class="signup_fields" for="RePassword1">Re-enter the Password</label>
+    <input type="password" id="text4" class="form-control" id="sign_rePassword" placeholder="Re-enter Password">
+  </div>
+  <div class="form-group">
+    <label class="signup_fields" for="picture">Choose a Profile Picture</label>
+    <input class="signup_fields" type="file" id="picture">
+  </div>
+   <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+   </div>
+    </div>      
+   </div><!-- /.modal-->
+
 
 <!--Activity Modal-->
 <div class="modal fade" id="createActivity" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -211,8 +248,8 @@
                         <label class="col-md-3 control-label">Activity Status</label>
                         <div class="col-md-5">
                             <select id = "status">
-                                <option value="status" selected>Select status of the activity</option>
-                                <option>-------</option>
+                                <optgroup label="Select Activity">  
+                                <option selected="selected" disabled="disabled">--------</option>      
                                 <option value="1">Running</option>
                                 <option value="2">Completed</option>
                             </select>
@@ -222,10 +259,12 @@
                         <label class="col-md-3 control-label">Activity Category</label>
                         <div class="col-md-5">
                             <select id = "category">
-                                <option value="status" selected>Select category of the activity</option>
-                                <option>-------</option>
+                                <optgroup label="Select Category">
+                                <option selected="selected" disabled="disabled">--------</option>      
                                 <option value="1">Testing</option>
                                 <option value="2">Development</option>
+                                <option id="others_link">Others</option>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
