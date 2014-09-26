@@ -22,7 +22,7 @@ $(function()
                     dataType: 'json',
                     success: function(data) {
                         window.location.href = "/homepage.html";
-                        $('#response_data').html("Welcome "+ data.username );
+                        //$('#response_data').html("Welcome "+ data.username );
 
                     },
                     error: function (xhr, status){
