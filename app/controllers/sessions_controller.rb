@@ -6,23 +6,27 @@ class SessionsController < ApplicationController
   end
 
   def login_attempt
-  	authorized_user = User.authenticate(params[:username], params[:password])
-  	if authorized_user
-      p authorized_user
-  		session[:user_id] = authorized_user.id
+  	@authorized_user = User.authenticate(params[:username], params[:password])
+  	if @authorized_user
+      p "------"
+      p @authorized_user
+  		session[:user_id] = @authorized_user.id
       #render :json => authorized_user
       #respond_with(authorized_user)
       p session[:user_id]
       respond_to do |format|
-        format.json { render json: authorized_user }
+        format.json { render "login_attempt.json" }
+        #format.json { render json: @authorized_user }
       end
   		#flash[:notice] = "Welcome, You logged in as #{authorized_user.username}"
   		#redirect_to activities_url(session[:user_id])
   	else
+      respond_to do |format|
   		flash[:notice] = "Invalid Username or Password"
   		flash[:color] = "Invalid"
   		render "login"
-  	end
+  	  end
+    end
   end
 
   def home
