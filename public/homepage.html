@@ -34,7 +34,7 @@
                     </a>
                  <ul style="list-style: none;" class="collapse out" id="createMenu">
                     <li><a data-toggle="modal"
-                           data-target="#createActivity" href="#">New Activity</a></li>
+                           data-target="#createActivity" id="activity_form" href="#">New Activity</a></li>
                     <li><a data-toggle="modal"
                            data-target="#categoryModal" href="#">New Category</a></li>
                     <li><a href="#">Edit User Information </a></li>
@@ -129,7 +129,6 @@
               <div class="col-md-5 col-md-offset-3">
                    <button type="button" class="btn btn-primary btn-category" data-dismiss="modal">Submit</button>&nbsp;&nbsp;
                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    
              </div>
        </div>
        </div>
@@ -249,7 +248,7 @@
                         <div class="col-md-5">
                             <select id = "status">
                                 <optgroup label="Select Activity">  
-                                <option selected="selected" disabled="disabled">--------</option>      
+                                <option selected="selected" disabled="disabled">--------</option>
                                 <option value="1">Running</option>
                                 <option value="2">Completed</option>
                             </select>

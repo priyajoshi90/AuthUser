@@ -22,6 +22,8 @@ $(function()
                     dataType: 'json',
                     success: function(data) {
                         window.location.href = "/homepage.html";
+                        
+
                         $('#response_data').html("Welcome "+ data.username );
 
                     },
@@ -105,6 +107,29 @@ $(function()
             }
         });
             });
+
+        $('#activity_form').click(function(){
+        $.ajax({
+        url: '/activities',
+        async:false,
+        type: 'GET',
+        dataType:'json',
+        success: function(data)
+        {
+            dropdown(data);
+        }
+    });
+  });
+        function dropdown(data)
+        {
+            $("#status").html("");
+            for (var i=0;i<=data.length;i++)
+            {
+
+            var d=$("<select id='dynamic_status'><optgroup label='Select Activity'><option>"+(data[i].name)+"</option></optgroup></select>")
+                $("#dynamic_status").append(d);
+            }
+        };
 
     $('.btn-activity').click(function(){
         $.ajax({
