@@ -40,6 +40,60 @@ padding:40px;
 	margin-left:460px;
 	margin-top: 80px;
 }
+#navchange
+{
+	background-color: #4076B2 !important;
+}
+#sidebar-wrapper
+{
+	background-color: #F1F1EA !important;
+	border:solid 1px grey; 
+}
+#tool_tipmenu
+{
+	display: none;
+}
+.sub_menu
+{
+	list-style: none;
+}
+.bread
+{
+	color: #4076B2 !important;
+}
+.dash_header
+{
+	border:solid 1px grey; 
+}
+.toggle_icon:hover
+{
+	color:white !important;
+}
+
+#nimesh:hover
+{
+	color:white !important;
+}
+.active
+{
+	color:black !important;
+}
+.active:hover
+{
+	color:white !important;
+}
+.horizon
+{
+	background-color:black !important;
+}
+a
+{
+	color:black !important;
+}
+a:hover
+{
+	color:#4076B2 !important;
+}
 #text1
 {
 	width:350px;

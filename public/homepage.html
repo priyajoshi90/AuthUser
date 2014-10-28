@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/sidebar.css">
 <link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="/tooltip.css">
+<script type="text/javascript" src="/tooltip.js"></script>
 <script src="/Dashboard App/Dashboard/jquery.min.js"></script>
 <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
 <script src="/dash.js"></script>
@@ -40,7 +42,7 @@
                     <li><a href="#">Edit User Information </a></li>
                     <li class="divider"></li>
                     <li><a data-toggle="modal"
-   data-target="#newmemberModal" href="#">Create a Member</a></li>
+                           data-target="#newmemberModal" href="#">Create a Member</a></li>
                  </ul> 
                 </li>
                 <li>
@@ -68,6 +70,7 @@
             </ul>
         </div>
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div id="navchange">
         
         <div class="container">
             <div class="navbar-header">
@@ -79,31 +82,36 @@
                 </button>
                 
                 <a class="navbar-brand" id="nimesh" href="#"><i id="toggle_icon" class="fa fa-bars fa-lg"></i></a>
-                <a id="logout" class="navbar-brand" href="#">Logout</a>
+                
             </div>
              
           
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#" target="_blank">Home</a></li>
-                    <li><a href="#" target="_blank">About</a></li>
-                    <li><a href="#" target="_blank">Contact</a></li>
+                    <li><a class="active" href="#" target="_blank">Home</a></li>
+                    <li><a class="active" href="#" target="_blank">About</a></li>
+                    <li><a class="active" href="#" target="_blank">Contact</a></li>
                 </ul>
                 <form role="search" class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" placeholder="Search" class="form-control">
                 </div>
             </form>
+            <div id="tool_tipmenu">
             
+            <li class="sub_menu"><a href="#">Settings</a></li>
+            <li class="sub_menu"><a id="logout" href="#">Logout</a></li>
+            
+            </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                <a  data-toggle="modal" data-target="#myModal" href="#">
-                <b>Login
-                </a>
+                <a href="#" onmouseover="tooltip.pop(this, '##tool_tipmenu')">Welcome</a>
+               <!-- <a id="logout" class="active" class="navbar-brand" href="#">Logout</a>-->
                 </li>
             </ul>
             </div>
         </div>
+     </div>
     </nav>
 
 <!-- Category Modal -->
@@ -137,7 +145,7 @@
 </div>
 
      
-<!-- Login Modal -->
+<!-- Login Modal 
 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -157,10 +165,11 @@
       </form>
     </div>
   </div>
- </div>
+ </div>-->
+ <div class="dash_header">
  <ul class="breadcrumb" id="bread">
     <li>You are Here:</li>
-    <li><a href="/homepage.html">Home</a></li>
+    <li><a class="bread" href="/homepage.html">Home</a></li>
     </ul>
     <div id="dashboard_navbar">
     <i class="fa fa-home fa-2x"></i> &nbsp; <span id="dash_font">Dashboard</span>
@@ -180,6 +189,7 @@
     <li><a data-toggle="modal"
    data-target="#newmemberModal" href="#">Create a Member</a></li>
   </ul>
+</div>
 </div>
 <div id="some" class="table-responsive">
     </div>
