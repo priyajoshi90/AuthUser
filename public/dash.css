@@ -53,6 +53,28 @@ padding:40px;
 {
 	display: none;
 }
+#duplicate
+{		
+	position:absolute;
+	margin-left:-20px;
+	margin-top:200px;
+	height:350px;
+	width:75px;
+	display: none;
+	background-color: #F1F1EA;
+	border:solid 1px grey;
+	border-radius: 8px;
+}
+#minimized li
+{
+	width:40px;
+}
+#some
+{
+	margin-left: 55px;
+	position: relative;
+	width: auto;
+}
 .sub_menu
 {
 	list-style: none;
