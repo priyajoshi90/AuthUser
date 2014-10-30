@@ -188,7 +188,6 @@ $(document).ready(function(){
                 ]
             }]
         });
-int a =45.0;
                 // Build the chart for categories
         $('#piecontainer_category').highcharts({
             chart: {
@@ -216,7 +215,7 @@ int a =45.0;
                 type: 'pie',
                 name: 'Category share',
                 data: [
-                    ['Testing',   a],
+                    ['Testing', 45.0],
                     ['Others',       26.8],
                     {
                         name: 'Development',
