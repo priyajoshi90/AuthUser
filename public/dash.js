@@ -1,6 +1,6 @@
 $(document).ready(function(){
-$("#createlink").toggle();
-$("#nimesh").click(function(e) {
+    $("#createlink").toggle();
+    $("#nimesh").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
@@ -11,8 +11,9 @@ $("#nimesh").click(function(e) {
                 $("#duplicate").show();
             });
  
-$(function()
- {
+    $(function()
+    {      
+        
        $('#login_main').click(function(){
                 $.ajax({
                     url: '/login_attempt',
@@ -50,6 +51,8 @@ $(function()
   });
   function active(data) {
     $("#some").html("");
+    $("#piecontainer_activities").html("");
+    $("#piecontainer_category").html("");
         var r = $("<table class='table table-bordered table-hover'><thead><tr><th>&nbsp;&nbsp;Select</th><th>Activity Name</th><th>Description</th><th>Category</th><th>Status</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(r);
        for (var i = 0; i <=data.length ; i++) 
@@ -132,5 +135,95 @@ $(function()
             }
         });
     });
+    // Build the chart for activities
+        $('#piecontainer_activities').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Status of Activities'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Activities',
+                data: [
+                    ['Completed',       26.8],
+                    {
+                        name: 'Running',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                ]
+            }]
+        });
+int a =45.0;
+                // Build the chart for categories
+        $('#piecontainer_category').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Share of Categories'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Category share',
+                data: [
+                    ['Testing',   a],
+                    ['Others',       26.8],
+                    {
+                        name: 'Development',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                ]
+            }]
+        });
+            function CheckPassword(inptext)   
+{   
+var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;  
+if(inptext.value.match(paswd))   
+{   
+alert('Correct, try another...')  
+return true;  
+}  
+else  
+{   
+alert('Wrong...!')  
+return false;  
+}  
+}    
   });
 });

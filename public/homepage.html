@@ -8,9 +8,12 @@
 <link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/sidebar.css">
 <link rel="stylesheet" type="text/css" href="../Dashboard App/Dashboard/font-awesome.min.css">
+<script src="/Dashboard App/Dashboard/jquery.min.js"></script>
+<script src="/jquery.js"></script>
+<script src="/highchart.js"></script>
+<script src="/export.js"></script>
 <link type="text/css" rel="stylesheet" href="/tooltip.css">
 <script type="text/javascript" src="/tooltip.js"></script>
-<script src="/Dashboard App/Dashboard/jquery.min.js"></script>
 <script src="/Dashboard App/Dashboard/bootstrap.min.js"></script>
 <script src="/dash.js"></script>
 </head> 
@@ -43,9 +46,6 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <div id="response_data">
-
-                    </div>
                 </li>
                <li>
                     <a href="/homepage.html"><i class="fa fa-tachometer"></i> &nbsp;Dashboard</a>
@@ -190,9 +190,11 @@
   </ul>
 </div>
 </div>
-<div id="some" class="table-responsive">
+    <div id="some" class="table-responsive">
     </div>
-</div>
+    <div id="piecontainer_activities"></div>
+    <div id="piecontainer_category"></div>
+    </div>
 
 <!--Sign Up Modal-->
 <div class="modal fade" id="newmemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

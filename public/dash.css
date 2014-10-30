@@ -49,6 +49,22 @@ padding:40px;
 	background-color: #F1F1EA !important;
 	border:solid 1px grey; 
 }
+#piecontainer_activities
+{
+	min-width: 310px; 
+	height: 400px; 
+	position: absolute;
+	margin-left: 160px;
+	margin-top: 50px;
+}
+#piecontainer_category
+{
+	min-width: 310px; 
+	height: 400px; 
+	position: absolute;
+	margin-left: 600px;
+	margin-top: 50px;
+}
 #tool_tipmenu
 {
 	display: none;
