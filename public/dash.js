@@ -37,6 +37,22 @@ $(document).ready(function(){
                 });
             });
 
+       $('#dash_home').click(function(){
+        $.ajax({
+            url: '/home',
+            async: false,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data)
+            {
+                //alert(data);
+            },
+            error: function(xhr,status){
+                alert(status);
+            }
+        });
+       });
+
   $('.activitydata').click(function(){
     $.ajax({
         url: '/activities',
