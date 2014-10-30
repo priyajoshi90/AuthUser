@@ -8,6 +8,7 @@ AuthenticateUser::Application.routes.draw do
   get "login", :to => "sessions#login"
   get "logout", :to => "sessions#logout"
   get "profile", :to => "sessions#profile"
+  get "home", :to => "sessions#home"
   get "setting", :to => "sessions#setting"
   post "login_attempt", :to => "sessions#login_attempt"
   post "/users", :to => "users#create", :as => ""

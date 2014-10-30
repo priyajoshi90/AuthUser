@@ -1,0 +1,8 @@
+{
+"activities_count" : "<%= @activities.size %>",
+"running_activities" : "<%= @activities.where(:status_id => "1").count %>",
+"completed_activities" : "<%= @activities.where(:status_id => "2").count %>",
+"testing" : "<%= @activities.where(:category_id => "1").count %>",
+"development" : "<%= @activities.where(:category_id => "2").count %>",
+"others" : "<%= @activities.where(:category_id => "3").count %>"
+}

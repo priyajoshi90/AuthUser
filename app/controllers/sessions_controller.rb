@@ -30,6 +30,10 @@ class SessionsController < ApplicationController
   end
 
   def home
+    @activities = Activity.all
+    respond_to do |format|
+      format.json { render "home.json" }
+    end
   end
 
   def profile
