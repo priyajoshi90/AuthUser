@@ -59,7 +59,7 @@
                     </a>
                  <ul style="list-style: none;" class="collapse out" id="createMenu">
                     <li><a data-toggle="modal"
-                           data-target="#createActivity" href="#">New Activity</a></li>
+                           data-target="#createActivity" id="active_modal" href="#">New Activity</a></li>
                     <li><a data-toggle="modal"
                            data-target="#categoryModal" href="#">New Category</a></li>
                     <li><a href="#">Edit User Information </a></li>
@@ -268,12 +268,12 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Activity Category</label>
                         <div class="col-md-5">
-                            <select id = "category">
+                            <select id = "category_select">
                                 <optgroup label="Select Category">
                                 <option selected="selected" disabled="disabled">--------</option>      
                                 <option value="1">Testing</option>
                                 <option value="2">Development</option>
-                                <option id="others_link">Others</option>
+                                <option value="3">Others</option>
                                 </optgroup>
                             </select>
                         </div>

@@ -7,7 +7,7 @@ class Activity < ActiveRecord::Base
   		super(:only => [:name,:desc,:created_at,:updated_at],
   			:include => {
   				:category => {:only => :title},
-  				:status => {:only => :title}
+  				:status => {:only => :title},
   				})
 	end
 end

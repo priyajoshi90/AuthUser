@@ -26,7 +26,6 @@ $(document).ready(function(){
                     dataType: 'json',
                     success: function(data) {
                         window.location.href = "/homepage.html";
-                        
 
                         $('#response_data').html("Welcome "+ data.username );
 
@@ -38,21 +37,109 @@ $(document).ready(function(){
             });
 
        $('#dash_home').click(function(){
+        $("#some").html("");
         $.ajax({
             url: '/home',
             async: false,
             type: 'GET',
             dataType: 'json',
-            success: function(data)
+            success: function(data1)
             {
-                //alert(data);
+                
+                console.log(typeof(data1.testing));
+                //var a =data1.testing;
+                $('#piecontainer_category').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Share of Categories'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Category share',
+                        data: [
+                            ['Testing', parseInt(data1.testing)],
+                            ['Others',  parseInt(data1.others)],
+                            {
+                                name: 'Development',
+                                y: parseInt(data1.development),
+                                sliced: true,
+                                selected: true
+                            },
+                        ]
+                    }]
+                });
+                $('#piecontainer_activities').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Status of Activities'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Activities',
+                data: [
+                    ['Completed',   parseInt(data1.completed_activities)],
+                    {
+                        name: 'Running',
+                        y: parseInt(data1.running_activities),
+                        sliced: true,
+                        selected: true
+                    },
+                ]
+            }]
+        });
             },
             error: function(xhr,status){
                 alert(status);
             }
         });
        });
-
+        
+  $('#active_modal').click(function(){
+    $.ajax({
+        url: '/categories',
+        async:false,
+        type: 'GET',
+        dataType:'json',
+        success: function(data)
+        {
+            console.log(typeof(data.id));
+        }
+    });
+  });
   $('.activitydata').click(function(){
     $.ajax({
         url: '/activities',
@@ -67,8 +154,8 @@ $(document).ready(function(){
   });
   function active(data) {
     $("#some").html("");
-    $("#piecontainer_activities").html("");
-    $("#piecontainer_category").html("");
+        $("#piecontainer_activities").html("");
+        $("#piecontainer_category").html("");
         var r = $("<table class='table table-bordered table-hover'><thead><tr><th>&nbsp;&nbsp;Select</th><th>Activity Name</th><th>Description</th><th>Category</th><th>Status</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(r);
        for (var i = 0; i <=data.length ; i++) 
@@ -92,6 +179,8 @@ $(document).ready(function(){
   });
    function cate(data) {
     $("#some").html("");
+    $("#piecontainer_activities").html("");
+        $("#piecontainer_category").html("");
         var c = $("<table class='table table-bordered table-hover'><thead><tr><th>&nbsp;&nbsp;Select</th><th>Category Name</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(c);
        for (var i = 0; i <=data.length ; i++) 
@@ -116,8 +205,8 @@ $(document).ready(function(){
             data: { activity: {
                 name: $('#name').val(),
                 desc: $('#desc').val(),
-                category_id: $('#status').val(),
-                status_id: $('#category').val()
+                status_id: $('#status').val(),
+                category_id: $('#category_select').val()
                 },
             },
             async: false,
@@ -152,80 +241,9 @@ $(document).ready(function(){
         });
     });
     // Build the chart for activities
-        $('#piecontainer_activities').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: 'Status of Activities'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Activities',
-                data: [
-                    ['Completed',       26.8],
-                    {
-                        name: 'Running',
-                        y: 12.8,
-                        sliced: true,
-                        selected: true
-                    },
-                ]
-            }]
-        });
+        
                 // Build the chart for categories
-        $('#piecontainer_category').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: 'Share of Categories'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Category share',
-                data: [
-                    ['Testing', 45.0],
-                    ['Others',       26.8],
-                    {
-                        name: 'Development',
-                        y: 12.8,
-                        sliced: true,
-                        selected: true
-                    },
-                ]
-            }]
-        });
+        
             function CheckPassword(inptext)   
 {   
 var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;  
