@@ -26,6 +26,9 @@ gem 'binding_of_caller'
 
 gem 'paperclip'
 
+#Required for Authorization
+gem 'cancan'
+
 # Required for password encryption
 gem 'bcrypt-ruby', :require => 'bcrypt' 
 
