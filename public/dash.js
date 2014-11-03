@@ -68,7 +68,7 @@ $(function()
     $("#some").html("");
         var r = $("<table class='table table-bordered table-hover'><thead><tr><th>&nbsp;&nbsp;Select</th><th>Activity Name</th><th>Description</th><th>Category</th><th>Status</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(r);
-       for (var i = 0; i <=data.length ; i++) 
+       for (var i = 0; i <data.length ; i++) 
      {
            var trr =$('<tr class="dynamic_row"><td><input type="checkbox" class="dynamo"></td><td>'+(data[i].name)+'</td><td>'+(data[i].desc)+'</td><td>'+(data[i].category.title)+'</td><td>'+(data[i].status.title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
        $(".table").append(trr);
@@ -91,9 +91,9 @@ $(function()
     $("#some").html("");
         var c = $("<table class='table table-bordered table-hover'><thead><tr><th>&nbsp;&nbsp;Select</th><th>Category Name</th><th>Created At</th><th>Last Updated At</th></tr></thead></table>")
        $("#some").append(c);
-       for (var i = 0; i <=data.length ; i++) 
+       for (var i = 0; i <data.length ; i++) 
      {
-           var ctr =$('<tr><td><input type="checkbox" class="dynamo"></td><td>'+(data[i].title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
+           var ctr =$('<tr><td><input type="checkbox" class="dynamo"></td><td>'+(data[i].c_title)+'</td><td>'+(data[i].created_at)+'</td><td>'+(data[i].updated_at)+'</td></tr>')
        $(".table").append(ctr);
      }
     }; 
@@ -113,8 +113,8 @@ $(function()
             data: { activity: {
                 name: $('#name').val(),
                 desc: $('#desc').val(),
-                category_id: $('#status').val(),
-                status_id: $('#category').val()
+                status_id: $('#status').val(),
+                category_id: $('#category').val()
                 },
             },
             async: false,
@@ -134,7 +134,7 @@ $(function()
             url: '/categories',
             data: {
                 category: {
-                    title: $('#cname').val(),
+                    c_title: $('#cname').val(),
                 },
             },
             async: false,
